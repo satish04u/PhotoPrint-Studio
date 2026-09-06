@@ -1807,7 +1807,9 @@
       z-index: 25;
     }
 
-</style>
+
+
+  </style>
 
   <!-- Dynamic Print Style for Sheet Orientation & Exact Paper Sizing -->
   <style id="dynamicPrintStyle">
@@ -1821,6 +1823,237 @@
         height: 210mm !important;
       }
     }
+  
+    /* PHOTO STUDIO INSPECTOR MODAL */
+    .photo-studio-backdrop {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(4, 6, 14, 0.88);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      z-index: 99999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+      box-sizing: border-box;
+    }
+    .photo-studio-dialog {
+      background: var(--surface);
+      border: 1px solid var(--border-hover);
+      border-radius: 14px;
+      width: 92vw;
+      max-width: 1080px;
+      height: 86vh;
+      max-height: 720px;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 24px 70px rgba(0,0,0,0.85), 0 0 40px rgba(108,99,255,0.18);
+      overflow: hidden;
+      animation: modalFadeIn .2s ease-out;
+    }
+    .photo-studio-hdr {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 18px;
+      border-bottom: 1px solid var(--border);
+      background: var(--surface2);
+      flex-shrink: 0;
+    }
+    .photo-studio-body {
+      display: grid;
+      grid-template-columns: 1fr 340px;
+      gap: 16px;
+      padding: 16px 18px;
+      flex: 1;
+      min-height: 0;
+      overflow: hidden;
+      box-sizing: border-box;
+    }
+    .photo-studio-stage {
+      background: #070912;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px;
+      position: relative;
+      height: 100%;
+      min-height: 0;
+      overflow: hidden;
+      background-image: 
+        linear-gradient(45deg, #0e1222 25%, transparent 25%), 
+        linear-gradient(-45deg, #0e1222 25%, transparent 25%), 
+        linear-gradient(45deg, transparent 75%, #0e1222 75%), 
+        linear-gradient(-45deg, transparent 75%, #0e1222 75%);
+      background-size: 16px 16px;
+      background-position: 0 0, 0 8px, 8px -8px, -8px 0px;
+    }
+    .photo-studio-stage img {
+      max-width: 100%;
+      max-height: 100%;
+      width: auto;
+      height: auto;
+      object-fit: contain;
+      border-radius: 6px;
+      box-shadow: 0 8px 28px rgba(0,0,0,0.6);
+      display: block;
+    }
+    .photo-studio-sidebar {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      height: 100%;
+      min-height: 0;
+      overflow-y: auto;
+      padding-right: 2px;
+    }
+    .ps-card {
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 10px 12px;
+    }
+    .ps-card-title {
+      font-size: 0.68rem;
+      font-weight: 700;
+      color: var(--accent2);
+      letter-spacing: 0.5px;
+      margin-bottom: 6px;
+      display: block;
+      text-transform: uppercase;
+    }
+    .ps-sparkle-btn {
+      width: 100%;
+      background: linear-gradient(135deg, #0284c7 0%, #6c63ff 100%);
+      color: #fff;
+      font-weight: 700;
+      font-size: 0.82rem;
+      padding: 9px 12px;
+      border-radius: 7px;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 7px;
+      transition: var(--tr);
+      box-shadow: 0 4px 14px rgba(108,99,255,0.3);
+    }
+    .ps-sparkle-btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 6px 18px rgba(108,99,255,0.5);
+    }
+    .ps-tool-btn {
+      background: var(--surface3);
+      border: 1px solid var(--border);
+      color: #fff;
+      padding: 8px 10px;
+      border-radius: 6px;
+      font-size: 0.74rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+      transition: var(--tr);
+    }
+    .ps-tool-btn:hover {
+      background: var(--surface4);
+      border-color: var(--accent);
+      color: var(--accent3);
+    }
+    .ps-slot-btn {
+      background: var(--surface3);
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 5px 8px;
+      border-radius: 5px;
+      font-size: 0.7rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--tr);
+    }
+    .ps-slot-btn:hover {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: #fff;
+    }
+
+    /* ENHANCED CLEAN THUMBNAIL CARDS */
+    .thumb-card {
+      position: relative;
+      border-radius: 8px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      background: var(--surface2);
+      cursor: pointer;
+      transition: var(--tr);
+      display: flex;
+      flex-direction: column;
+    }
+    .thumb-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+    }
+    .thumb-card-img-wrap {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 1;
+      overflow: hidden;
+      background: #070912;
+    }
+    .thumb-card-img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform .2s ease;
+    }
+    .thumb-card:hover .thumb-card-img-wrap img {
+      transform: scale(1.04);
+    }
+    .thumb-hover-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(11, 13, 23, 0.72);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+      opacity: 0;
+      transition: opacity .18s ease;
+      color: #fff;
+      font-size: 0.72rem;
+      font-weight: 600;
+    }
+    .thumb-card:hover .thumb-hover-overlay {
+      opacity: 1;
+    }
+    .thumb-meta-row {
+      padding: 5px 6px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-top: 1px solid var(--border);
+      background: var(--surface);
+    }
+    .thumb-pills-row {
+      display: flex;
+      gap: 3px;
+      padding: 0 6px 6px 6px;
+      background: var(--surface);
+    }
+
   </style>
 </head>
 <body>
@@ -2341,6 +2574,16 @@
               <button class="gap-btn" id="gapBtn_auto" onclick="setCutGap('auto')">Auto Distribute</button>
               <button class="gap-btn" id="gapBtn_0" onclick="setCutGap(0)">0 mm (Touching)</button>
             </div>
+            <!-- Live Gap Feedback & Scissor Fit Toggle -->
+            <div id="cutGapFeedbackBox" style="margin-top:8px;background:rgba(56,189,248,0.08);border:1px solid rgba(56,189,248,0.25);border-radius:8px;padding:8px 10px;font-size:0.72rem;line-height:1.4;color:var(--text-muted);">
+              <div id="cutGapFeedbackText">
+                ℹ️ <strong>Physical A4 Fit:</strong> Two True 4×6" photos take 203.2 mm of A4's 210 mm width. Horizontal gap is locked at 0 mm (touching) to keep 100% exact 4×6" size. Vertical gap is set to 10 mm.
+              </div>
+              <label style="display:flex;align-items:center;gap:6px;margin-top:6px;cursor:pointer;color:var(--accent3);font-weight:600;user-select:none;">
+                <input type="checkbox" id="chkAllowScissorGap" onchange="toggleComboScissorScale(this.checked)" style="accent-color:var(--accent);cursor:pointer;" />
+                Allow Scissor-Fit Scaling (~97×145mm) for cutting gap between ALL photos
+              </label>
+            </div>
           </div>
 
             </div>
@@ -2362,7 +2605,7 @@
             <span class="lbl">4. Add Photos</span>
             <div style="display:flex;align-items:center;gap:6px">
               <button class="btn-quick" onclick="addSamplePhotos()" style="color:var(--accent3);background:rgba(56,189,248,.12);border-color:rgba(56,189,248,.3);font-size:.72rem;padding:3px 8px;">+ Add Demo Photos</button>
-              <span id="photoCountLbl" style="font-size:.7rem;color:var(--text-muted)">0 loaded</span>
+              <span id="photoCountLblTop" style="font-size:.7rem;color:var(--text-muted)">0 loaded</span>
             </div>
           </div>
           <div class="upload" id="uploadZone">
@@ -2375,7 +2618,7 @@
           <div id="thumbSec" style="display:none">
             <div class="lbl-row" style="flex-wrap:wrap;gap:8px;">
               <div style="display:flex;align-items:center;gap:8px;">
-                <span class="lbl">Photo Pool (<span id="photoCountLbl">0 loaded</span>)</span>
+                <span class="lbl">Photo Pool (<span id="photoCountLblPool">0 loaded</span>)</span>
                 <label style="display:inline-flex;align-items:center;gap:5px;font-size:0.72rem;color:var(--accent3);cursor:pointer;user-select:none;" title="Automatically detect and clean Gemini sparkle watermark from newly added photos">
                   <input type="checkbox" id="chkAutoCleanUpload" checked style="accent-color:var(--accent);cursor:pointer;"> ✨ Auto-Clean on Upload
                 </label>
@@ -2662,6 +2905,82 @@
     </div>
   </div>
 </div>
+<!-- PHOTO STUDIO & INSPECTOR MODAL -->
+<div class="photo-studio-backdrop" id="photoStudioModalBackdrop" style="display:none;" onclick="onPhotoStudioBackdropClick(event)">
+  <div class="photo-studio-dialog" onclick="event.stopPropagation()">
+    <div class="photo-studio-hdr">
+      <div style="display:flex;align-items:center;gap:10px;">
+        <span style="font-size:1.6rem;">🖼️</span>
+        <div>
+          <h3 id="psModalTitle" style="font-size:1.05rem;font-weight:700;color:#fff;margin:0;">Photo Inspector & Studio</h3>
+          <p id="psModalSubtitle" style="font-size:0.75rem;color:var(--text-muted);margin:2px 0 0 0;">Inspect, clean watermark, magic touch-up, crop, or assign to slots</p>
+        </div>
+      </div>
+      <div style="display:flex;align-items:center;gap:10px;">
+        <span id="psModalBadge" class="wm-badge clean" style="display:none;">✨ Cleaned</span>
+        <button class="guide-close" onclick="closePhotoStudioModal()">&times;</button>
+      </div>
+    </div>
+    <div class="photo-studio-body">
+      <!-- Large Photo Display Stage -->
+      <div class="photo-studio-stage">
+        <img id="psModalImage" src="" alt="Selected Photo" />
+      </div>
+
+      <!-- Studio Controls Sidebar -->
+      <div class="photo-studio-sidebar">
+        <!-- 1. Watermark Cleaning -->
+        <div class="ps-card">
+          <span class="ps-card-title">1-Click AI Watermark Cleaner</span>
+          <button class="ps-sparkle-btn" id="psBtnCleanWm" onclick="psCleanCurrentPhotoWatermark()">
+            <span style="font-size:1.1rem;">✨</span> Remove Gemini Watermark
+          </button>
+          <div id="psWmStatusNotice" style="font-size:0.7rem;color:var(--text-muted);margin-top:6px;line-height:1.3;">
+            Analyzes bottom-right corner with reverse alpha blending.
+          </div>
+        </div>
+
+        <!-- 2. Edit Tools -->
+        <div class="ps-card">
+          <span class="ps-card-title">Precision Tools</span>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;">
+            <button class="ps-tool-btn" onclick="psOpenMagicEraser()" title="Brush over and erase marks or objects">
+              <span style="font-size:1rem;">🧹</span> Magic Eraser
+            </button>
+            <button class="ps-tool-btn" onclick="psOpenCropModal()" title="Precision aspect ratio cropping">
+              <span style="font-size:1rem;">✂️</span> Crop & Frame
+            </button>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:6px;">
+            <button class="ps-tool-btn" onclick="psRotateCurrentPhoto()" title="Rotate 90 degrees">
+              <span style="font-size:1rem;">🔄</span> Rotate 90°
+            </button>
+            <button class="ps-tool-btn" id="psBtnRevert" onclick="psRevertCurrentPhoto()" style="color:var(--text-dim);" title="Revert to original uncleaned photo">
+              <span style="font-size:1rem;">↩</span> Revert Original
+            </button>
+          </div>
+        </div>
+
+        <!-- 3. Slot Assignment -->
+        <div class="ps-card">
+          <span class="ps-card-title">Send to Print Sheet Slot</span>
+          <div id="psSlotAssignButtons" style="display:flex;gap:6px;flex-wrap:wrap;"></div>
+        </div>
+
+        <!-- 4. Footer Actions -->
+        <div style="margin-top:auto;padding-top:10px;display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--border);">
+          <button class="btn btn-s" onclick="psDeleteCurrentPhoto()" style="color:var(--red);border-color:rgba(248,113,113,0.3);font-size:0.72rem;padding:5px 10px;">
+            🗑 Remove Photo
+          </button>
+          <button class="btn btn-p" onclick="closePhotoStudioModal()" style="font-size:0.78rem;padding:6px 16px;">
+            Done / Close
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 <div class="guide-modal-backdrop" id="guideModalBackdrop">
   <div class="guide-dialog">
     <div class="crop-hdr">
@@ -2872,6 +3191,7 @@ function updateHeaderBadges() {
 // LAYOUT MODE SWITCHER (QUICK TEMPLATES)
 function setLayoutMode(lMode) {
   layoutMode = lMode;
+  updateCutGapFeedback();
   var bGrid = document.getElementById('btnLayoutGrid');
   if (bGrid) bGrid.classList.toggle('active', lMode === 'grid');
   var bCombo = document.getElementById('btnLayoutCombo');
@@ -3274,7 +3594,7 @@ function openCropForEngineSlotId(slotId) {
     syncCropCustomInputs();
     startCropperWithPhoto(photo);
   };
-  tempImg.src = photo.originalUrl || photo.url;
+  tempImg.src = photo.url || photo.originalUrl;
 }
 
 function toggleFitSelectedEngineSlot() {
@@ -4028,10 +4348,13 @@ function getSlotsCountForActiveLayout() {
 function renderThumbGrid() {
   var sec = document.getElementById('thumbSec');
   var grid = document.getElementById('thumbGrid');
-  var countLbl = document.getElementById('photoCountLbl');
+  var countLblTop = document.getElementById('photoCountLblTop');
+  var countLblPool = document.getElementById('photoCountLblPool');
 
   var cleanedCount = photos.filter(function(p){ return p.cleanedGemini; }).length;
-  countLbl.textContent = photos.length + ' loaded' + (cleanedCount > 0 ? ' (' + cleanedCount + ' cleaned)' : '');
+  var countText = photos.length + ' loaded' + (cleanedCount > 0 ? ' (' + cleanedCount + ' cleaned)' : '');
+  if (countLblTop) countLblTop.textContent = countText;
+  if (countLblPool) countLblPool.textContent = countText;
 
   if (!photos.length) {
     sec.style.display = 'none';
@@ -4046,39 +4369,222 @@ function renderThumbGrid() {
     var slotPillsHtml = '';
     for (var s = 0; s < per; s++) {
       var sLbl = 'S' + (s + 1);
-      slotPillsHtml += '<button class="thumb-btn slot-pill" onclick="assignPhotoToSpecificSlot(\''+p.id+'\', '+s+')" title="Assign directly to Slot '+(s+1)+'">'+sLbl+'</button>';
+      var isAssigned = slotConfigs[s] && slotConfigs[s].photoId === p.id;
+      var pillStyle = isAssigned 
+        ? 'background:var(--green);color:#0b0d17;border-color:var(--green);font-weight:700;' 
+        : '';
+      slotPillsHtml += '<button class="thumb-btn slot-pill" style="' + pillStyle + '" onclick="event.stopPropagation(); assignPhotoToSpecificSlot(\''+p.id+'\', '+s+')" title="Assign directly to Slot '+(s+1)+'">'+sLbl+'</button>';
     }
 
     var cleanBadgeHtml = p.cleanedGemini 
-      ? '<span class="wm-badge clean" title="Gemini watermark mathematically removed">✨ Cleaned</span>' 
+      ? '<span class="wm-badge clean" style="font-size:8px;padding:1px 4px;" title="Gemini watermark removed">✨ Clean</span>' 
       : '';
 
-    var cleanBtnText = p.cleanedGemini ? '✨ Re-clean' : '✨ Clean WM';
-    var revertBtnHtml = p.cleanedGemini 
-      ? '<button class="thumb-btn" style="color:var(--text-dim);font-size:9px;width:100%;margin-top:2px;" onclick="revertPhotoToOriginal(\''+p.id+'\')" title="Revert to original uncleaned photo">↩ Revert</button>' 
-      : '';
-
-    html += '<div class="thumb-card" title="'+escapeHtml(p.name)+'">'
-      + '<img src="'+p.url+'" alt="'+escapeHtml(p.name)+'" id="thumbImg_'+p.id+'" />'
-      + '<div class="thumb-tools">'
-      + '  <div style="display:flex;align-items:center;justify-content:space-between;width:100%;padding:0 2px;">'
+    html += '<div class="thumb-card" onclick="openPhotoStudioModal(\''+p.id+'\')" title="Click to open large Photo Studio & inspector">'
+      + '  <div class="thumb-card-img-wrap">'
+      + '    <img src="'+p.url+'" alt="'+escapeHtml(p.name)+'" id="thumbImg_'+p.id+'" />'
+      + '    <div class="thumb-hover-overlay">'
+      + '      <span>🔍 View / Edit</span>'
+      + '    </div>'
+      + '  </div>'
+      + '  <div class="thumb-meta-row">'
       + '    <span style="font-size:10px;color:#fff;font-weight:700">#'+(idx+1)+'</span>'
       +      cleanBadgeHtml
-      + '    <button class="thumb-btn" onclick="openCropModalForPhoto(\''+p.id+'\')">&#9986; Crop</button>'
+      + '    <button class="thumb-btn" onclick="event.stopPropagation(); openPhotoStudioModal(\''+p.id+'\')" style="font-size:9px;padding:2px 5px;">Studio &rarr;</button>'
       + '  </div>'
-      + '  <div style="display:flex;gap:3px;width:100%;margin-top:2px;">'
-      + '    <button class="thumb-btn clean-btn" style="flex:1;font-size:9px;" onclick="cleanWatermarkForPhoto(\''+p.id+'\')" title="Remove Gemini visible watermark with mathematical reverse alpha blending">'+cleanBtnText+'</button>'
-      + '    <button class="thumb-btn eraser-btn" style="flex:1;font-size:9px;" onclick="openMagicEraserForPhoto(\''+p.id+'\')" title="Brush over and erase arbitrary watermarks, text, or objects">🧹 Eraser</button>'
-      + '  </div>'
-      +    revertBtnHtml
-      + '  <button class="thumb-btn primary" style="width:100%;margin-top:2px;" onclick="assignPhotoToCurrentEmptySlot(\''+p.id+'\')">+ Next Slot</button>'
-      + '  <div style="display:flex;gap:3px;width:100%;justify-content:center;margin-top:2px;">'
+      + '  <div class="thumb-pills-row" onclick="event.stopPropagation()">'
       +      slotPillsHtml
       + '  </div>'
-      + '</div>'
       + '</div>';
   });
   grid.innerHTML = html;
+}
+
+// =========================================================================
+// LARGE PHOTO STUDIO & INSPECTOR MODAL
+// =========================================================================
+
+var currentStudioPhotoId = null;
+
+function openPhotoStudioModal(photoId) {
+  var photo = photos.find(function(p) { return p.id === photoId; });
+  if (!photo) return;
+  currentStudioPhotoId = photoId;
+
+  var backdrop = document.getElementById('photoStudioModalBackdrop');
+  var titleEl = document.getElementById('psModalTitle');
+  var subEl = document.getElementById('psModalSubtitle');
+  var badgeEl = document.getElementById('psModalBadge');
+  var imgEl = document.getElementById('psModalImage');
+  var noticeEl = document.getElementById('psWmStatusNotice');
+  var cleanBtn = document.getElementById('psBtnCleanWm');
+  var revertBtn = document.getElementById('psBtnRevert');
+  var slotContainer = document.getElementById('psSlotAssignButtons');
+
+  var photoIdx = photos.indexOf(photo) + 1;
+  titleEl.textContent = 'Photo #' + photoIdx + ' — ' + photo.name;
+  subEl.textContent = 'Natural Resolution: ' + photo.naturalW + ' × ' + photo.naturalH + ' px • Lab 300+ DPI Ready';
+
+  imgEl.src = photo.url;
+
+  if (photo.cleanedGemini) {
+    badgeEl.style.display = 'inline-flex';
+    badgeEl.textContent = '✨ Cleaned';
+    noticeEl.textContent = 'Watermark cleaned with reverse alpha blending.';
+    noticeEl.style.color = 'var(--green)';
+    cleanBtn.innerHTML = '<span style="font-size:1.1rem;">✨</span> Re-scan & Clean Watermark';
+    revertBtn.style.display = 'flex';
+  } else {
+    badgeEl.style.display = 'none';
+    noticeEl.textContent = 'Analyzes bottom-right corner with mathematical reverse alpha blending.';
+    noticeEl.style.color = 'var(--text-muted)';
+    cleanBtn.innerHTML = '<span style="font-size:1.1rem;">✨</span> Remove Gemini Watermark';
+    revertBtn.style.display = 'none';
+  }
+
+  // Generate Slot Assignment Buttons
+  var per = getSlotsCountForActiveLayout();
+  var slotsHtml = '';
+  for (var s = 0; s < per; s++) {
+    var isAssigned = slotConfigs[s] && slotConfigs[s].photoId === photoId;
+    var btnStyle = isAssigned ? 'background:var(--green);color:#0b0d17;border-color:var(--green);font-weight:700;' : '';
+    slotsHtml += '<button class="ps-slot-btn" style="' + btnStyle + '" onclick="psAssignToSlot(' + s + ')">Slot ' + (s + 1) + (isAssigned ? ' (Active)' : '') + '</button>';
+  }
+  slotsHtml += '<button class="ps-slot-btn" style="background:var(--accent);color:#fff;border-color:var(--accent);" onclick="psAssignToNextSlot()">+ Auto Next Slot</button>';
+  slotContainer.innerHTML = slotsHtml;
+
+  backdrop.style.display = 'flex';
+}
+
+function closePhotoStudioModal() {
+  var backdrop = document.getElementById('photoStudioModalBackdrop');
+  if (backdrop) backdrop.style.display = 'none';
+  currentStudioPhotoId = null;
+}
+
+function onPhotoStudioBackdropClick(e) {
+  if (e.target.id === 'photoStudioModalBackdrop') {
+    closePhotoStudioModal();
+  }
+}
+
+function psCleanCurrentPhotoWatermark() {
+  if (!currentStudioPhotoId) return;
+  var photo = photos.find(function(p) { return p.id === currentStudioPhotoId; });
+  if (!photo) return;
+
+  var noticeEl = document.getElementById('psWmStatusNotice');
+  if (noticeEl) {
+    noticeEl.textContent = 'Scanning bottom-right quadrant for Gemini watermark...';
+    noticeEl.style.color = 'var(--accent3)';
+  }
+
+  cleanWatermarkForPhoto(currentStudioPhotoId, false);
+
+  setTimeout(function() {
+    var updated = photos.find(function(p) { return p.id === currentStudioPhotoId; });
+    if (updated) {
+      document.getElementById('psModalImage').src = updated.url;
+      if (updated.cleanedGemini) {
+        document.getElementById('psModalBadge').style.display = 'inline-flex';
+        document.getElementById('psBtnRevert').style.display = 'flex';
+        if (noticeEl) {
+          noticeEl.textContent = '✨ Watermark removed successfully!';
+          noticeEl.style.color = 'var(--green)';
+        }
+      } else {
+        if (noticeEl) {
+          noticeEl.textContent = 'No Gemini star detected. Use 🧹 Magic Eraser to touch up any mark!';
+          noticeEl.style.color = 'var(--orange)';
+        }
+      }
+    }
+  }, 400);
+}
+
+function psOpenMagicEraser() {
+  if (!currentStudioPhotoId) return;
+  var pId = currentStudioPhotoId;
+  closePhotoStudioModal();
+  openMagicEraserForPhoto(pId);
+}
+
+function psOpenCropModal() {
+  if (!currentStudioPhotoId) return;
+  var pId = currentStudioPhotoId;
+  closePhotoStudioModal();
+  openCropModalForPhoto(pId);
+}
+
+function psRotateCurrentPhoto() {
+  if (!currentStudioPhotoId) return;
+  var photo = photos.find(function(p) { return p.id === currentStudioPhotoId; });
+  if (!photo) return;
+
+  var img = new Image();
+  img.onload = function() {
+    var canvas = document.createElement('canvas');
+    canvas.width = img.naturalHeight;
+    canvas.height = img.naturalWidth;
+    var ctx = canvas.getContext('2d');
+    ctx.translate(canvas.width / 2, canvas.height / 2);
+    ctx.rotate(90 * Math.PI / 180);
+    ctx.drawImage(img, -img.naturalWidth / 2, -img.naturalHeight / 2);
+    var rotatedUrl = canvas.toDataURL('image/png');
+    photo.url = rotatedUrl;
+    photo.naturalW = canvas.width;
+    photo.naturalH = canvas.height;
+    document.getElementById('psModalImage').src = rotatedUrl;
+    syncPhotoUpdatesToSlots(photo.id);
+    renderThumbGrid();
+    toast('Photo rotated 90°', 's');
+  };
+  img.src = photo.url;
+}
+
+function psRevertCurrentPhoto() {
+  if (!currentStudioPhotoId) return;
+  revertPhotoToOriginal(currentStudioPhotoId);
+  var photo = photos.find(function(p) { return p.id === currentStudioPhotoId; });
+  if (photo) {
+    document.getElementById('psModalImage').src = photo.url;
+    document.getElementById('psModalBadge').style.display = 'none';
+    document.getElementById('psBtnRevert').style.display = 'none';
+    var noticeEl = document.getElementById('psWmStatusNotice');
+    if (noticeEl) {
+      noticeEl.textContent = 'Reverted to pristine original photo.';
+      noticeEl.style.color = 'var(--text-muted)';
+    }
+  }
+}
+
+function psAssignToSlot(slotIdx) {
+  if (!currentStudioPhotoId) return;
+  assignPhotoToSpecificSlot(currentStudioPhotoId, slotIdx);
+  openPhotoStudioModal(currentStudioPhotoId);
+}
+
+function psAssignToNextSlot() {
+  if (!currentStudioPhotoId) return;
+  assignPhotoToCurrentEmptySlot(currentStudioPhotoId);
+  openPhotoStudioModal(currentStudioPhotoId);
+}
+
+function psDeleteCurrentPhoto() {
+  if (!currentStudioPhotoId) return;
+  var pId = currentStudioPhotoId;
+  closePhotoStudioModal();
+  photos = photos.filter(function(p) { return p.id !== pId; });
+  Object.keys(slotConfigs).forEach(function(k) {
+    if (slotConfigs[k] && slotConfigs[k].photoId === pId) {
+      slotConfigs[k].photoId = null;
+      slotConfigs[k].croppedUrl = null;
+    }
+  });
+  renderThumbGrid();
+  renderSlotPanel();
+  buildPreview();
+  toast('Photo removed', 'i');
 }
 
 // SHEET ORIENTATION
@@ -4672,6 +5178,62 @@ function buildPreview() {
 }
 
 // 1. STANDARD GRID LAYOUT (PHYSICAL MM)
+var allowComboScissorScale = false;
+
+function getActiveCuttingGap(maxAllowed, defaultVal) {
+  var req = activeConfig.cutGap_mm;
+  if (req === undefined || req === null) req = defaultVal !== undefined ? defaultVal : 5;
+  if (req === 'auto') return 'auto';
+  var val = parseFloat(req);
+  if (isNaN(val)) val = defaultVal !== undefined ? defaultVal : 5;
+  if (maxAllowed !== undefined && maxAllowed !== null) {
+    return Math.max(0, Math.min(maxAllowed, val));
+  }
+  return Math.max(0, val);
+}
+
+function updateCutGapFeedback() {
+  var box = document.getElementById('cutGapFeedbackBox');
+  var textEl = document.getElementById('cutGapFeedbackText');
+  var chk = document.getElementById('chkAllowScissorGap');
+  if (!box || !textEl) return;
+
+  var gap = activeConfig.cutGap_mm;
+  if (gap === undefined || gap === null) gap = 5;
+
+  if (layoutMode === 'combo_1x57_2x46' || activePresetKey === 'combo_1x57_2x46') {
+    box.style.display = 'block';
+    if (!allowComboScissorScale) {
+      var rowGapDesc = (gap === 'auto') ? '5.9 mm (Auto Equal)' : (gap + ' mm');
+      textEl.innerHTML = 'ℹ️ <strong>Physical A4 Fit (True Size):</strong> Two True 4×6" photos take 203.2 mm of A4\'s 210 mm width. Horizontal gap is locked at <strong>0 mm (touching)</strong> to keep 100% exact 4×6" size. Vertical gap between rows is set to <strong>' + rowGapDesc + '</strong>.';
+    } else {
+      var reqG = (gap === 'auto') ? 6 : Math.min(14, parseFloat(gap) || 5);
+      var availW = 203.2;
+      var s1_w = (availW - reqG) / 2;
+      var s1_h = s1_w * 1.5;
+      textEl.innerHTML = '✂️ <strong>Scissor-Fit Mode Active:</strong> 4×6" photos scaled to <strong>' + (s1_w/25.4).toFixed(1) + '×' + (s1_h/25.4).toFixed(1) + '" (' + (s1_w/10).toFixed(1) + '×' + (s1_h/10).toFixed(1) + ' cm)</strong>. Uniform <strong>' + reqG + ' mm</strong> scissor cutting gap applied between ALL photos!';
+    }
+  } else if (layoutMode === 'combo_2x57_1x46' || activePresetKey === 'combo_2x57_1x46') {
+    box.style.display = 'block';
+    textEl.innerHTML = 'ℹ️ <strong>Physical A4 Fit:</strong> 5×7" + 4×6" photos take 203.2 mm width. Top horizontal gap is 0 mm (touching); vertical gap between rows is set to <strong>' + (gap === 'auto' ? '6 mm (Auto)' : (gap + ' mm')) + '</strong>.';
+  } else {
+    box.style.display = 'block';
+    var gapDesc = (gap === 'auto') ? 'Auto Distribute' : (gap + ' mm (' + (gap/25.4).toFixed(1) + '")');
+    textEl.innerHTML = '✅ <strong>Cutting Gap:</strong> Set to <strong>' + gapDesc + '</strong> padding between photos for easy scissor cutting.';
+  }
+
+  if (chk) {
+    chk.checked = allowComboScissorScale;
+  }
+}
+
+function toggleComboScissorScale(checked) {
+  allowComboScissorScale = checked;
+  updateCutGapFeedback();
+  buildPreview();
+  toast(checked ? '✂️ Scissor-Fit mode: Photos slightly scaled for cutting gap on all sides' : '📏 True Size mode: Exact 100% dimensions restored (0mm horizontal gap)', 'i');
+}
+
 function setCutGap(gapMM) {
   activeConfig.cutGap_mm = gapMM;
   document.querySelectorAll('.gap-btn').forEach(function(b) { b.classList.remove('active'); });
@@ -4685,6 +5247,7 @@ function setCutGap(gapMM) {
     else badge.textContent = gapMM + ' mm (' + (gapMM/25.4).toFixed(1) + '")';
   }
 
+  updateCutGapFeedback();
   toast(gapMM === 0 ? 'Photos touching (0 gap)' : ('Cutting Gap set to ' + (gapMM==='auto'?'Auto Distribute':(gapMM+' mm')) + ' for easy cutting!'), 's');
   buildPreview();
 }
@@ -5022,10 +5585,6 @@ function makeA4SheetCombo2x57_1x46(cutGuide, showFrameBorder) {
   sheet.style.height = sheetH_mm + 'mm';
   sheet.style.transform = 'scale(' + previewScale + ')';
 
-  // Physical Dimensions with 0.5" less allowance:
-  // Slot 1 (5x7 Portrait): 4.5 x 6.5 in = 114.3 x 165.1 mm
-  // Slot 2 (4x6 Portrait): 3.5 x 5.5 in = 88.9 x 139.7 mm
-  // Slot 3 (5x7 Landscape): 6.5 x 4.5 in = 165.1 x 114.3 mm
   var s1_w = 114.3;
   var s1_h = 165.1;
   var s2_w = 88.9;
@@ -5035,15 +5594,15 @@ function makeA4SheetCombo2x57_1x46(cutGuide, showFrameBorder) {
 
   var topW = s1_w + s2_w; // 203.2 mm (leaves 6.8 mm margin on 210mm A4)
   var padLeftTop = (sheetW_mm - topW) / 2; // 3.4 mm
-  var padTop = 5.8; // 5.8 mm top margin
-  var rowGap = 6.0; // 6.0 mm row gap
-  var padLeftBottom = (sheetW_mm - s3_w) / 2; // 22.45 mm (centered!)
+  var extraH = sheetH_mm - (s1_h + s3_h); // 17.6 mm
+  var reqGap = activeConfig.cutGap_mm !== undefined ? activeConfig.cutGap_mm : 6;
+  var rowGap = (reqGap === 'auto') ? (extraH / 3) : Math.min(15.0, Math.max(0, parseFloat(reqGap) || 6.0));
+  var padTop = Math.max(1.3, (extraH - rowGap) / 2);
+  var padLeftBottom = (sheetW_mm - s3_w) / 2; // centered
 
-  // Trimming Lines
   if (cutGuide === 'frame-dashed' || cutGuide === 'frame-solid' || cutGuide === 'both') {
     var lineClass = (cutGuide === 'frame-solid') ? 'solid' : 'dashed';
 
-    // Vertical cut line between Slot 1 and Slot 2
     var vl = document.createElement('div');
     vl.className = 'cut-v ' + lineClass;
     vl.style.left = (padLeftTop + s1_w) + 'mm';
@@ -5051,7 +5610,6 @@ function makeA4SheetCombo2x57_1x46(cutGuide, showFrameBorder) {
     vl.style.height = (padTop + s1_h + rowGap / 2) + 'mm';
     sheet.appendChild(vl);
 
-    // Horizontal cut line separating top row from bottom landscape
     var hl = document.createElement('div');
     hl.className = 'cut-h ' + lineClass;
     hl.style.top = (padTop + s1_h + rowGap / 2) + 'mm';
@@ -5062,21 +5620,18 @@ function makeA4SheetCombo2x57_1x46(cutGuide, showFrameBorder) {
 
   var mat = 6.35; // 0.25 in / 6.35 mm border
 
-  // Slot 1: 5x7" Portrait (Top Left)
   var slot1 = createSlotElement(
     0, padLeftTop, padTop, s1_w, s1_h, mat, mat, s1_w - 2 * mat, s1_h - 2 * mat,
     cutGuide, showFrameBorder, false, '5×7" Portrait'
   );
   sheet.appendChild(slot1);
 
-  // Slot 2: 4x6" Portrait (Top Right)
   var slot2 = createSlotElement(
     1, padLeftTop + s1_w, padTop, s2_w, s2_h, mat, mat, s2_w - 2 * mat, s2_h - 2 * mat,
     cutGuide, showFrameBorder, false, '4×6" Portrait'
   );
   sheet.appendChild(slot2);
 
-  // Slot 3: 5x7" Landscape (Bottom Center)
   var slot3 = createSlotElement(
     2, padLeftBottom, padTop + s1_h + rowGap, s3_w, s3_h, mat, mat, s3_w - 2 * mat, s3_h - 2 * mat,
     cutGuide, showFrameBorder, true, '5×7" Landscape'
@@ -5087,7 +5642,6 @@ function makeA4SheetCombo2x57_1x46(cutGuide, showFrameBorder) {
   outer.appendChild(viewport);
   return outer;
 }
-
 
 // 4. COMBO LAYOUT: ONE TRUE 5x7 + TWO TRUE 4x6 ON A4 (210 x 297 mm)
 function makeA4SheetCombo1x57_2x46(cutGuide, showFrameBorder) {
@@ -5121,23 +5675,61 @@ function makeA4SheetCombo1x57_2x46(cutGuide, showFrameBorder) {
   sheet.style.height = sheetH_mm + 'mm';
   sheet.style.transform = 'scale(' + previewScale + ')';
 
-  // Dynamic Border Margin: 0 when 0" / Full Bleed preset is active
   var mat = (activeConfig.photoW_mm >= activeConfig.frameW_mm) ? 0 : Math.max(0, (activeConfig.frameW_mm - activeConfig.photoW_mm) / 2);
 
   if (!isLandscapeSheet) {
     // 100% TRUE Physical Dimensions on Portrait A4:
-    // Slot 1 (4x6 Portrait): 4.0 x 6.0 in = 101.6 x 152.4 mm
-    // Slot 2 (4x6 Portrait): 4.0 x 6.0 in = 101.6 x 152.4 mm
-    // Slot 3 (True 5x7 on paper): 7.0 x 5.0 in = 177.8 x 127.0 mm (Rotated 90° for sheet fit)
     var s1_w = 101.6, s1_h = 152.4;
     var s2_w = 101.6, s2_h = 152.4;
     var s3_w = 177.8, s3_h = 127.0;
 
-    var topW = s1_w + s2_w; // 203.2 mm (leaves 6.8 mm margin on 210mm A4)
-    var padLeftTop = (sheetW_mm - topW) / 2; // 3.4 mm
-    var padLeftBottom = (sheetW_mm - s3_w) / 2; // 16.1 mm (centered!)
-    var padTop = 6.0; // 6.0 mm top margin
-    var rowGap = 5.0; // 5.0 mm row gap
+    var extraH = sheetH_mm - (s1_h + s3_h); // 17.6 mm
+    var reqGap = activeConfig.cutGap_mm !== undefined ? activeConfig.cutGap_mm : 5;
+
+    var hGap = 0.0;
+    var rowGap = 5.0;
+    var padLeftTop = 3.4;
+    var padTop = 6.0;
+
+    if (!allowComboScissorScale) {
+      // EXACT TRUE SIZE MODE: Horizontal gap locked at 0mm so 4x6" is exact 101.6mm
+      hGap = 0.0;
+      padLeftTop = (sheetW_mm - (s1_w + s2_w)) / 2; // 3.4 mm
+      if (reqGap === 'auto') {
+        rowGap = extraH / 3; // ~5.87 mm
+        padTop = extraH / 3;
+      } else if (reqGap === 0) {
+        rowGap = 0.0;
+        padTop = extraH / 2; // 8.8 mm
+      } else {
+        rowGap = Math.min(15.0, parseFloat(reqGap) || 5.0);
+        padTop = Math.max(1.3, (extraH - rowGap) / 2);
+      }
+    } else {
+      // SCISSOR-FIT MODE: Scale top photos to introduce requested cutting gap!
+      var targetG = (reqGap === 'auto') ? 6.0 : Math.min(14.0, Math.max(0, parseFloat(reqGap) || 5.0));
+      if (targetG === 0) {
+        hGap = 0;
+        rowGap = 0;
+        padTop = extraH / 2;
+        padLeftTop = 3.4;
+      } else {
+        hGap = targetG;
+        var availW = 203.2; // 210mm minus 6.8mm outer margins
+        s1_w = (availW - hGap) / 2;
+        s1_h = s1_w * 1.5;
+        s2_w = s1_w;
+        s2_h = s1_h;
+        var scaleRatio = s1_w / 101.6;
+        s3_w = 177.8 * scaleRatio;
+        s3_h = 127.0 * scaleRatio;
+        rowGap = targetG;
+        padTop = Math.max(1.0, (sheetH_mm - (s1_h + rowGap + s3_h)) / 2);
+        padLeftTop = 3.4;
+      }
+    }
+
+    var padLeftBottom = (sheetW_mm - s3_w) / 2; // centered
 
     // Trimming Lines
     if (cutGuide === 'frame-dashed' || cutGuide === 'frame-solid' || cutGuide === 'both') {
@@ -5145,7 +5737,7 @@ function makeA4SheetCombo1x57_2x46(cutGuide, showFrameBorder) {
 
       var vl = document.createElement('div');
       vl.className = 'cut-v ' + lineClass;
-      vl.style.left = (padLeftTop + s1_w) + 'mm';
+      vl.style.left = (padLeftTop + s1_w + hGap / 2) + 'mm';
       vl.style.top = '0mm';
       vl.style.height = (padTop + s1_h + rowGap / 2) + 'mm';
       sheet.appendChild(vl);
@@ -5158,19 +5750,20 @@ function makeA4SheetCombo1x57_2x46(cutGuide, showFrameBorder) {
       sheet.appendChild(hl);
     }
 
+    var s1Label = allowComboScissorScale && hGap > 0 ? ((s1_w/25.4).toFixed(1) + '×' + (s1_h/25.4).toFixed(1) + '" (Scissor-Fit)') : 'True 4×6" Portrait';
     var slot1 = createSlotElement(
       0, padLeftTop, padTop, s1_w, s1_h, mat, mat, s1_w - 2 * mat, s1_h - 2 * mat,
-      cutGuide, showFrameBorder, false, 'True 4×6" Portrait'
+      cutGuide, showFrameBorder, false, s1Label
     );
     sheet.appendChild(slot1);
 
     var slot2 = createSlotElement(
-      1, padLeftTop + s1_w, padTop, s2_w, s2_h, mat, mat, s2_w - 2 * mat, s2_h - 2 * mat,
-      cutGuide, showFrameBorder, false, 'True 4×6" Portrait'
+      1, padLeftTop + s1_w + hGap, padTop, s2_w, s2_h, mat, mat, s2_w - 2 * mat, s2_h - 2 * mat,
+      cutGuide, showFrameBorder, false, s1Label
     );
     sheet.appendChild(slot2);
 
-    var s3Label = 'True 5×7" (Printed Sideways for A4)';
+    var s3Label = allowComboScissorScale && hGap > 0 ? ((s3_w/25.4).toFixed(1) + '×' + (s3_h/25.4).toFixed(1) + '" (Scissor-Fit)') : 'True 5×7" (Printed Sideways for A4)';
     var slot3 = createSlotElement(
       2, padLeftBottom, padTop + s1_h + rowGap, s3_w, s3_h, mat, mat, s3_w - 2 * mat, s3_h - 2 * mat,
       cutGuide, showFrameBorder, true, s3Label
@@ -5178,20 +5771,32 @@ function makeA4SheetCombo1x57_2x46(cutGuide, showFrameBorder) {
     sheet.appendChild(slot3);
   } else {
     // LANDSCAPE A4: One 5x7" UPRIGHT PORTRAIT on left + Two 4x6" LANDSCAPE on right!
-    var s1_w = 127.0, s1_h = 177.8; // Slot 0: True 5x7" Portrait (Upright!)
-    var s2_w = 152.4, s2_h = 101.6; // Slot 1: True 4x6" Landscape (Top Right)
-    var s3_w = 152.4, s3_h = 101.6; // Slot 2: True 4x6" Landscape (Bottom Right)
+    var s1_w = 127.0, s1_h = 177.8;
+    var s2_w = 152.4, s2_h = 101.6;
+    var s3_w = 152.4, s3_h = 101.6;
 
+    var reqGap = activeConfig.cutGap_mm !== undefined ? activeConfig.cutGap_mm : 5;
     var colGap = 8.0;
-    var rowGap = 5.0;
-    var totalW = s1_w + colGap + s2_w; // 287.4 mm
-    var padLeft = (sheetW_mm - totalW) / 2; // 4.8 mm
-    var padTopLeft = (sheetH_mm - s1_h) / 2; // 16.1 mm
-    var padTopRight = (sheetH_mm - (s2_h * 2 + rowGap)) / 2; // 2.6 mm
+    var rowGap = 0.0;
+
+    var extraW = sheetW_mm - (s1_w + s2_w); // 17.6 mm
+    var extraH = sheetH_mm - (s2_h * 2); // 6.8 mm
+
+    if (reqGap === 'auto') {
+      colGap = extraW / 3; // 5.87 mm
+    } else if (reqGap === 0) {
+      colGap = 0.0;
+    } else {
+      colGap = Math.min(15.0, parseFloat(reqGap) || 5.0);
+    }
+
+    var totalW = s1_w + colGap + s2_w;
+    var padLeft = Math.max(1.3, (sheetW_mm - totalW) / 2);
+    var padTopLeft = (sheetH_mm - s1_h) / 2;
+    var padTopRight = (sheetH_mm - (s2_h * 2 + rowGap)) / 2;
 
     if (cutGuide === 'frame-dashed' || cutGuide === 'frame-solid' || cutGuide === 'both') {
       var lineClass = (cutGuide === 'frame-solid') ? 'solid' : 'dashed';
-      // Vertical cut line between 5x7" and the two 4x6" photos
       var vl = document.createElement('div');
       vl.className = 'cut-v ' + lineClass;
       vl.style.left = (padLeft + s1_w + colGap / 2) + 'mm';
@@ -5199,7 +5804,6 @@ function makeA4SheetCombo1x57_2x46(cutGuide, showFrameBorder) {
       vl.style.height = sheetH_mm + 'mm';
       sheet.appendChild(vl);
 
-      // Horizontal cut line separating top 4x6" and bottom 4x6"
       var hl = document.createElement('div');
       hl.className = 'cut-h ' + lineClass;
       hl.style.top = (padTopRight + s2_h + rowGap / 2) + 'mm';
@@ -5263,13 +5867,15 @@ function makeA4SheetCombo2x57(cutGuide, showFrameBorder) {
   sheet.style.transform = 'scale(' + previewScale + ')';
 
   var mat = (activeConfig.photoW_mm >= activeConfig.frameW_mm) ? 0 : Math.max(0, (activeConfig.frameW_mm - activeConfig.photoW_mm) / 2);
+  var reqGap = activeConfig.cutGap_mm !== undefined ? activeConfig.cutGap_mm : 10;
 
   if (!isLandscapeSheet) {
     // A4 Portrait: two 7x5" landscape photos stacked vertically
     var sw = 177.8, sh = 127.0;
     var padLeft = (sheetW_mm - sw) / 2; // 16.1 mm
-    var gap = 10.0;
-    var padTop = (sheetH_mm - (sh * 2 + gap)) / 2; // 16.5 mm
+    var extraH = sheetH_mm - (sh * 2); // 43.0 mm
+    var gap = (reqGap === 'auto') ? (extraH / 3) : Math.min(35.0, Math.max(0, parseFloat(reqGap) || 0));
+    var padTop = (sheetH_mm - (sh * 2 + gap)) / 2;
 
     if (cutGuide === 'frame-dashed' || cutGuide === 'frame-solid' || cutGuide === 'both') {
       var lineClass = (cutGuide === 'frame-solid') ? 'solid' : 'dashed';
@@ -5288,9 +5894,10 @@ function makeA4SheetCombo2x57(cutGuide, showFrameBorder) {
   } else {
     // A4 Landscape: two 5x7" portrait photos side by side
     var sw = 127.0, sh = 177.8;
-    var gap = 10.0;
-    var padLeft = (sheetW_mm - (sw * 2 + gap)) / 2; // 16.5 mm
-    var padTop = (sheetH_mm - sh) / 2; // 16.1 mm
+    var extraW = sheetW_mm - (sw * 2); // 43.0 mm
+    var gap = (reqGap === 'auto') ? (extraW / 3) : Math.min(35.0, Math.max(0, parseFloat(reqGap) || 0));
+    var padLeft = (sheetW_mm - (sw * 2 + gap)) / 2;
+    var padTop = (sheetH_mm - sh) / 2;
 
     if (cutGuide === 'frame-dashed' || cutGuide === 'frame-solid' || cutGuide === 'both') {
       var lineClass = (cutGuide === 'frame-solid') ? 'solid' : 'dashed';
@@ -5344,13 +5951,15 @@ function makeA4SheetCombo2x46(cutGuide, showFrameBorder) {
   sheet.style.transform = 'scale(' + previewScale + ')';
 
   var mat = (activeConfig.photoW_mm >= activeConfig.frameW_mm) ? 0 : Math.max(0, (activeConfig.frameW_mm - activeConfig.photoW_mm) / 2);
+  var reqGap = activeConfig.cutGap_mm !== undefined ? activeConfig.cutGap_mm : 14;
 
   if (!isLandscapeSheet) {
-    // A4 Portrait: two 6x4" landscape photos stacked vertically with ample margin
+    // A4 Portrait: two 6x4" landscape photos stacked vertically
     var sw = 152.4, sh = 101.6;
     var padLeft = (sheetW_mm - sw) / 2; // 28.8 mm
-    var gap = 14.0;
-    var padTop = (sheetH_mm - (sh * 2 + gap)) / 2; // 39.9 mm
+    var extraH = sheetH_mm - (sh * 2); // 93.8 mm
+    var gap = (reqGap === 'auto') ? (extraH / 3) : Math.min(60.0, Math.max(0, parseFloat(reqGap) || 0));
+    var padTop = (sheetH_mm - (sh * 2 + gap)) / 2;
 
     if (cutGuide === 'frame-dashed' || cutGuide === 'frame-solid' || cutGuide === 'both') {
       var lineClass = (cutGuide === 'frame-solid') ? 'solid' : 'dashed';
@@ -5369,9 +5978,10 @@ function makeA4SheetCombo2x46(cutGuide, showFrameBorder) {
   } else {
     // A4 Landscape: two 4x6" portrait photos side by side
     var sw = 101.6, sh = 152.4;
-    var gap = 16.0;
-    var padLeft = (sheetW_mm - (sw * 2 + gap)) / 2; // 38.9 mm
-    var padTop = (sheetH_mm - sh) / 2; // 28.8 mm
+    var extraW = sheetW_mm - (sw * 2); // 93.8 mm
+    var gap = (reqGap === 'auto') ? (extraW / 3) : Math.min(60.0, Math.max(0, parseFloat(reqGap) || 0));
+    var padLeft = (sheetW_mm - (sw * 2 + gap)) / 2;
+    var padTop = (sheetH_mm - sh) / 2;
 
     if (cutGuide === 'frame-dashed' || cutGuide === 'frame-solid' || cutGuide === 'both') {
       var lineClass = (cutGuide === 'frame-solid') ? 'solid' : 'dashed';
@@ -5394,7 +6004,7 @@ function makeA4SheetCombo2x46(cutGuide, showFrameBorder) {
   return outer;
 }
 
-// 7. COMBO LAYOUT: FOUR 3.5x5" (3R) ON A4 (210 x 297 mm)
+// 7. COMBO LAYOUT: FOUR 3.5x5 (3R) ON A4 (210 x 297 mm)
 function makeA4SheetCombo4x35(cutGuide, showFrameBorder) {
   var isLandscapeSheet = currentSheetOrient === 'landscape';
   var sheetW_mm = isLandscapeSheet ? 297 : 210;
@@ -5425,19 +6035,24 @@ function makeA4SheetCombo4x35(cutGuide, showFrameBorder) {
   sheet.style.transform = 'scale(' + previewScale + ')';
 
   var mat = (activeConfig.photoW_mm >= activeConfig.frameW_mm) ? 0 : Math.max(0, (activeConfig.frameW_mm - activeConfig.photoW_mm) / 2);
+  var reqGap = activeConfig.cutGap_mm !== undefined ? activeConfig.cutGap_mm : 8;
 
   var sw = 88.9, sh = 127.0; // 3.5 x 5 in
   if (isLandscapeSheet) {
     sw = 127.0;
     sh = 88.9;
   }
-  var colGap = 8.0, rowGap = 10.0;
+  var extraW = sheetW_mm - (sw * 2);
+  var extraH = sheetH_mm - (sh * 2);
+
+  var colGap = (reqGap === 'auto') ? (extraW / 3) : Math.min(25.0, Math.max(0, parseFloat(reqGap) || 0));
+  var rowGap = (reqGap === 'auto') ? (extraH / 3) : Math.min(30.0, Math.max(0, parseFloat(reqGap) || 0));
+
   var padLeft = (sheetW_mm - (sw * 2 + colGap)) / 2;
   var padTop = (sheetH_mm - (sh * 2 + rowGap)) / 2;
 
   if (cutGuide === 'frame-dashed' || cutGuide === 'frame-solid' || cutGuide === 'both') {
     var lineClass = (cutGuide === 'frame-solid') ? 'solid' : 'dashed';
-    // Vertical split line
     var vl = document.createElement('div');
     vl.className = 'cut-v ' + lineClass;
     vl.style.left = (padLeft + sw + colGap / 2) + 'mm';
@@ -5445,7 +6060,6 @@ function makeA4SheetCombo4x35(cutGuide, showFrameBorder) {
     vl.style.height = sheetH_mm + 'mm';
     sheet.appendChild(vl);
 
-    // Horizontal split line
     var hl = document.createElement('div');
     hl.className = 'cut-h ' + lineClass;
     hl.style.top = (padTop + sh + rowGap / 2) + 'mm';
@@ -5469,7 +6083,6 @@ function makeA4SheetCombo4x35(cutGuide, showFrameBorder) {
   return outer;
 }
 
-// HELPER TO CONSTRUCT AN INDIVIDUAL SLOT
 function createSlotElement(slotIndex, leftMM, topMM, widthMM, heightMM, innerLeftMM, innerTopMM, photoWidthMM, photoHeightMM, cutGuide, showFrameBorder, isLandscapeSlot, customLabel) {
   var frameBox = document.createElement('div');
   frameBox.className = 'slot-frame';
@@ -6116,7 +6729,7 @@ function openCropModal(slotIdx) {
     syncCropCustomInputs();
     startCropperWithPhoto(photo);
   };
-  tempImg.src = photo.originalUrl || photo.url;
+  tempImg.src = photo.url || photo.originalUrl;
 }
 
 function openCropModalForPhoto(photoId) {
@@ -6157,7 +6770,7 @@ function startCropperWithPhoto(photo) {
 
   syncCropCustomInputs();
 
-  var sourceUrl = photo.originalUrl || photo.url;
+  var sourceUrl = photo.url || photo.originalUrl;
 
   imgEl.onload = function() {
     cropImgNaturalW = imgEl.naturalWidth;
@@ -6521,7 +7134,7 @@ function applyCroppedImage() {
       buildPreview();
     }
   };
-  img.src = photo.originalUrl || photo.url;
+  img.src = photo.url || photo.originalUrl;
 }
 
 // CROP BOX DRAG & RESIZE EVENT LISTENERS
@@ -6837,117 +7450,52 @@ function detectAndRemoveGeminiWatermark(sourceDataUrl, callback) {
       var ctx = canvas.getContext('2d');
       ctx.drawImage(srcImg, 0, 0);
 
-      // Choose watermark configuration:
-      // Both dimensions > 1024 -> 96x96 watermark
-      // Otherwise -> 48x48 watermark
-      var useLarge = (W > 1024 && H > 1024);
-      var S = useLarge ? 96 : 48;
-      var alphaArr = useLarge ? geminiAlpha96 : geminiAlpha48;
-      var defaultMargin = useLarge ? 64 : 32;
-
-      // Search bottom-right quadrant: [max(0, W - 450), max(0, H - 450)] to [W - S, H - S]
       var searchMinX = Math.max(0, W - 450);
-      var searchMaxX = W - S;
       var searchMinY = Math.max(0, H - 450);
-      var searchMaxY = H - S;
-
-      if (searchMaxX < searchMinX || searchMaxY < searchMinY) {
-        if (callback) callback({ cleaned: false, reason: 'Image too small for watermark' });
-        return;
-      }
-
-      // Read bottom-right search area image data
       var sAreaW = W - searchMinX;
       var sAreaH = H - searchMinY;
+
       var areaData = ctx.getImageData(searchMinX, searchMinY, sAreaW, sAreaH);
       var aPixels = areaData.data;
 
-      // Precalculate luminance of search area
       var lum = new Float32Array(sAreaW * sAreaH);
       for (var p = 0, lIdx = 0; p < aPixels.length; p += 4, lIdx++) {
         lum[lIdx] = 0.299 * aPixels[p] + 0.587 * aPixels[p+1] + 0.114 * aPixels[p+2];
       }
 
-      // Template luminance from alpha map
-      var tLum = new Float32Array(S * S);
-      var tMean = 0;
-      for (var k = 0, aIdx = 0; k < S * S; k++, aIdx += 3) {
-        var aVal = 0.299 * alphaArr[aIdx] + 0.587 * alphaArr[aIdx+1] + 0.114 * alphaArr[aIdx+2];
-        tLum[k] = aVal;
-        tMean += aVal;
-      }
-      tMean /= (S * S);
-      var tNorm = 0;
-      for (var k = 0; k < S * S; k++) {
-        tLum[k] -= tMean;
-        tNorm += tLum[k] * tLum[k];
-      }
-      tNorm = Math.sqrt(tNorm);
+      function evaluateScale(S, alphaArr) {
+        if (sAreaW < S || sAreaH < S) return null;
 
-      // Fast Coarse Search (step = 4)
-      var step = 4;
-      var bestScore = -1;
-      var bestRelX = -1;
-      var bestRelY = -1;
-
-      var relMaxX = sAreaW - S;
-      var relMaxY = sAreaH - S;
-
-      for (var ry = 0; ry <= relMaxY; ry += step) {
-        for (var rx = 0; rx <= relMaxX; rx += step) {
-          var pMean = 0;
-          for (var py = 0; py < S; py++) {
-            var rowOff = (ry + py) * sAreaW + rx;
-            for (var px = 0; px < S; px++) {
-              pMean += lum[rowOff + px];
-            }
-          }
-          pMean /= (S * S);
-
-          var pNorm = 0;
-          var dot = 0;
-          for (var py = 0; py < S; py++) {
-            var rowOff = (ry + py) * sAreaW + rx;
-            var tRowOff = py * S;
-            for (var px = 0; px < S; px++) {
-              var val = lum[rowOff + px] - pMean;
-              pNorm += val * val;
-              dot += val * tLum[tRowOff + px];
-            }
-          }
-          pNorm = Math.sqrt(pNorm);
-
-          if (pNorm > 0.001 && tNorm > 0.001) {
-            var score = dot / (pNorm * tNorm);
-            if (score > bestScore) {
-              bestScore = score;
-              bestRelX = rx;
-              bestRelY = ry;
-            }
-          }
+        var tLum = new Float32Array(S * S);
+        var tMean = 0;
+        for (var k = 0, aIdx = 0; k < S * S; k++, aIdx += 3) {
+          var aVal = 0.299 * alphaArr[aIdx] + 0.587 * alphaArr[aIdx+1] + 0.114 * alphaArr[aIdx+2];
+          tLum[k] = aVal;
+          tMean += aVal;
         }
-      }
+        tMean /= (S * S);
+        var tNorm = 0;
+        for (var k = 0; k < S * S; k++) {
+          tLum[k] -= tMean;
+          tNorm += tLum[k] * tLum[k];
+        }
+        tNorm = Math.sqrt(tNorm);
 
-      // Fine Refinement (step = 1 around best coarse hit)
-      if (bestScore > 0.20 && bestRelX >= 0 && bestRelY >= 0) {
-        var fineMinX = Math.max(0, bestRelX - step);
-        var fineMaxX = Math.min(relMaxX, bestRelX + step);
-        var fineMinY = Math.max(0, bestRelY - step);
-        var fineMaxY = Math.min(relMaxY, bestRelY + step);
+        var step = 4;
+        var bestScore = -1, bestRelX = -1, bestRelY = -1;
+        var relMaxX = sAreaW - S;
+        var relMaxY = sAreaH - S;
 
-        for (var ry = fineMinY; ry <= fineMaxY; ry++) {
-          for (var rx = fineMinX; rx <= fineMaxX; rx++) {
+        for (var ry = 0; ry <= relMaxY; ry += step) {
+          for (var rx = 0; rx <= relMaxX; rx += step) {
             var pMean = 0;
             for (var py = 0; py < S; py++) {
               var rowOff = (ry + py) * sAreaW + rx;
-              for (var px = 0; px < S; px++) {
-                pMean += lum[rowOff + px];
-              }
+              for (var px = 0; px < S; px++) pMean += lum[rowOff + px];
             }
             pMean /= (S * S);
 
-            var pNorm = 0;
-            var dot = 0;
+            var pNorm = 0, dot = 0;
             for (var py = 0; py < S; py++) {
               var rowOff = (ry + py) * sAreaW + rx;
               var tRowOff = py * S;
@@ -6969,30 +7517,79 @@ function detectAndRemoveGeminiWatermark(sourceDataUrl, callback) {
             }
           }
         }
+
+        if (bestScore > 0.20 && bestRelX >= 0 && bestRelY >= 0) {
+          var fineMinX = Math.max(0, bestRelX - step);
+          var fineMaxX = Math.min(relMaxX, bestRelX + step);
+          var fineMinY = Math.max(0, bestRelY - step);
+          var fineMaxY = Math.min(relMaxY, bestRelY + step);
+
+          for (var ry = fineMinY; ry <= fineMaxY; ry++) {
+            for (var rx = fineMinX; rx <= fineMaxX; rx++) {
+              var pMean = 0;
+              for (var py = 0; py < S; py++) {
+                var rowOff = (ry + py) * sAreaW + rx;
+                for (var px = 0; px < S; px++) pMean += lum[rowOff + px];
+              }
+              pMean /= (S * S);
+
+              var pNorm = 0, dot = 0;
+              for (var py = 0; py < S; py++) {
+                var rowOff = (ry + py) * sAreaW + rx;
+                var tRowOff = py * S;
+                for (var px = 0; px < S; px++) {
+                  var val = lum[rowOff + px] - pMean;
+                  pNorm += val * val;
+                  dot += val * tLum[tRowOff + px];
+                }
+              }
+              pNorm = Math.sqrt(pNorm);
+
+              if (pNorm > 0.001 && tNorm > 0.001) {
+                var score = dot / (pNorm * tNorm);
+                if (score > bestScore) {
+                  bestScore = score;
+                  bestRelX = rx;
+                  bestRelY = ry;
+                }
+              }
+            }
+          }
+        }
+
+        return { score: bestScore, relX: bestRelX, relY: bestRelY, S: S, alpha: alphaArr };
       }
 
-      // Check detection confidence
-      // Standard threshold is 0.25 (same as Kwyshell GeminiWatermarkTool)
-      var isDetected = (bestScore >= 0.25);
-      var targetX, targetY;
+      var match96 = (W >= 800 && H >= 800) ? evaluateScale(96, geminiAlpha96) : null;
+      var match48 = evaluateScale(48, geminiAlpha48);
 
+      var bestMatch = match96;
+      if (!match96 || (match48 && match48.score > (match96.score || 0))) {
+        bestMatch = match48;
+      }
+
+      if (!bestMatch) {
+        if (callback) callback({ cleaned: false, reason: 'Image too small' });
+        return;
+      }
+
+      var S = bestMatch.S;
+      var alphaArr = bestMatch.alpha;
+      var isDetected = (bestMatch.score >= 0.25);
+      var defaultMargin = (S === 96) ? 64 : 32;
+
+      var targetX, targetY;
       if (isDetected) {
-        targetX = searchMinX + bestRelX;
-        targetY = searchMinY + bestRelY;
+        targetX = searchMinX + bestMatch.relX;
+        targetY = searchMinY + bestMatch.relY;
       } else {
-        // Fallback to standard official Gemini watermark position
         targetX = W - defaultMargin - S;
         targetY = H - defaultMargin - S;
       }
 
-      // Read exact watermark region
       var wmPatch = ctx.getImageData(targetX, targetY, S, S);
       var patchData = wmPatch.data;
-
-      // Reverse Alpha Blending:
-      // watermarked = alpha * 255 + (1 - alpha) * original
-      // original = (watermarked - alpha * 255) / (1 - alpha)
-      var noiseFloor = 3.0 / 255.0; // 0.0117
+      var noiseFloor = 3.0 / 255.0;
       var pixelsChanged = 0;
 
       for (var y = 0; y < S; y++) {
@@ -7022,9 +7619,9 @@ function detectAndRemoveGeminiWatermark(sourceDataUrl, callback) {
 
       if (callback) {
         callback({
-          cleaned: isDetected || (bestScore >= 0.18),
+          cleaned: isDetected || (bestMatch.score >= 0.20),
           cleanedUrl: cleanedUrl,
-          confidence: bestScore,
+          confidence: bestMatch.score,
           x: targetX,
           y: targetY,
           size: S,
@@ -7107,20 +7704,18 @@ function revertPhotoToOriginal(photoId) {
 
 // Syncs photo url changes to any active slots on the layout sheet
 function syncPhotoUpdatesToSlots(photoId) {
-  // 1. Standard quick layout slots
+  // 1. Standard quick layout slots: clear cached croppedUrl so slot immediately reflects watermark clean/edits!
   Object.keys(slotConfigs).forEach(function(k) {
     if (slotConfigs[k] && slotConfigs[k].photoId === photoId) {
-      if (!slotConfigs[k].croppedUrl) {
-        // Slot uses base photo url
-      }
+      slotConfigs[k].croppedUrl = null;
     }
   });
 
   // 2. 2D Engine slots
   if (typeof engineSlots !== 'undefined' && Array.isArray(engineSlots)) {
     engineSlots.forEach(function(es) {
-      if (es.photoId === photoId && !es.croppedUrl) {
-        // Engine slot references base photo
+      if (es.photoId === photoId) {
+        es.croppedUrl = null;
       }
     });
   }
