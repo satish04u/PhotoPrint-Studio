@@ -1,0 +1,17 @@
+# Generated export files
+PhotoPrint_Photos.doc
+*.doc
+*.docx
+*.tmp
+
+# Operating System files
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+.DS_Store
+
+# Editor files
+.idea/
+.vscode/
+*.swp
+*.bak
